@@ -1,4 +1,4 @@
-package hibernate_test2.entity;
+package hibernate_one_to_one.entity;
 
 import javax.persistence.*;
 
@@ -10,6 +10,10 @@ public class Details {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name =  "id")
     private int id;
+
+
+    @OneToOne(mappedBy = "empDetails", cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
+    private Employee employee;
 
     @Column(name="city")
     private  String city;
@@ -61,6 +65,15 @@ public class Details {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+
 
     @Override
     public String toString() {
