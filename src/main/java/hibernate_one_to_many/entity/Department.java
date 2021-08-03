@@ -25,7 +25,8 @@ public class Department {
     private int minSalary;
 
     @OneToMany(cascade = CascadeType.ALL,
-            mappedBy = "department")
+            mappedBy = "department",
+            fetch = FetchType.LAZY)
     private List<Employee> emps;
 
     public Department() {
